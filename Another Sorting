@@ -1,0 +1,41 @@
+//https://dmoj.ca/problem/anothersorting
+//2020
+#include <iostream>
+using namespace std;
+int main() {
+    int N, K, *arr, temp;
+    bool possible = true;
+    
+    cin >> N >> K;
+    arr = new int[N];
+    
+    for (int i = 0; i < N; i++) {
+        cin >> arr[i];
+    }
+    
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N-K; j++) {
+            if (arr[j] > arr[j+K]) {
+                temp = arr[j];
+                arr[j] = arr[j+K];
+                arr[j+K] = temp;
+            }
+        }
+    }
+    
+    for (int i = 0; i < N-1; i++) {
+        if (arr[i] != arr[i+1] -1) {
+            possible = false;
+            break;
+        }
+    }
+    
+    if (possible == true) {
+        cout << "YES" << endl;
+    }
+    else {
+        cout << "NO" << endl;
+    }
+
+    return 0;
+}
